@@ -25,10 +25,15 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-//        Properties properties = new Properties()
-//        properties.load(project.rootProject.file("local.properties").newDataInputStream())
-//        buildConfigField "String", "header1", "\"${properties.getProperty("header1")}\""
-//        buildConfigField "String", "header2", "\"${properties.getProperty("header2")}\""
+        buildFeatures {
+            buildConfig true
+        }
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        buildConfigField "String", "HEADER_1", "\"${properties.getProperty("HEADER_1")}\""
+        buildConfigField "String", "HEADER_2", "\"${properties.getProperty("HEADER_2")}\""
+
     }
 
     buildTypes {

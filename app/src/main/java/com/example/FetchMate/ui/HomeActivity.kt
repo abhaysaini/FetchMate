@@ -8,8 +8,7 @@ import com.example.FetchMate.databinding.ActivityHomeBinding
 import com.example.FetchMate.data.api.RetrofitHelper
 import com.example.FetchMate.data.model.ResponseModel
 import com.example.FetchMate.ui.adapter.FileResponseAdapter
-import com.example.FetchMate.utils.Constants.HEADER_1
-import com.example.FetchMate.utils.Constants.HEADER_2
+import com.pluto.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,8 +32,8 @@ class HomeActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = RetrofitHelper.responseApiInterface.getData(
-                    header1 = HEADER_1,
-                    header2 = HEADER_2,
+                    header1 = com.example.FetchMate.BuildConfig.HEADER_1  ,
+                    header2 = com.example.FetchMate.BuildConfig.HEADER_2,
                     parameter1 = "Hulk",
                     parameter2 = fileType
                 )
