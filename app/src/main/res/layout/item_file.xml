@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    >
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/item_file"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#92A3FD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/file_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="File Name"
+                android:fontFamily="@font/nunito"
+                android:textSize="16sp"
+                android:layout_margin="8dp"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/share"
+                />
+
+            <TextView
+                android:id="@+id/file_date_added"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date Added"
+                android:fontFamily="@font/nunito"
+                android:textSize="16sp"
+                android:layout_margin="16dp"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/file_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="File Size"
+                android:fontFamily="@font/nunito"
+                android:textSize="16sp"
+                android:layout_margin="16dp"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/file_date_added"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/download"
+                />
+
+            <TextView
+                android:id="@+id/time_ago"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Time Ago"
+                android:fontFamily="@font/nunito"
+                android:textSize="16sp"
+                android:layout_margin="8dp"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/file_type"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/file_date_added"
+                app:layout_constraintEnd_toStartOf="@id/download"
+                />
+
+            <TextView
+                android:id="@+id/file_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="File Type"
+                android:fontFamily="@font/nunito"
+                android:textSize="16sp"
+                android:layout_margin="8dp"
+                android:padding="4dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@id/share"
+                app:layout_constraintTop_toBottomOf="@id/file_name"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/share"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_share"
+                app:layout_constraintBottom_toTopOf="@id/download"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/download"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_download"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

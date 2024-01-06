@@ -13,6 +13,8 @@ data class ResponseModel(
     val fileLink: String?,
     @SerializedName("date_added")
     val dateAdded: String?,
+    @SerializedName("time_ago")
+    val timeAgo: String?,
     @SerializedName("file_size")
     val fileSize: String?,
     @SerializedName("file_size_bytes")

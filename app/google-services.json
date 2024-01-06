@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1052372114479",
+    "project_id": "fetch-mate",
+    "storage_bucket": "fetch-mate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052372114479:android:c88da33ca468c8fd18fada",
+        "android_client_info": {
+          "package_name": "com.example.FetchMate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVM7sleaFRoNCAkPW8xvnsGabuVksJseI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
