@@ -33,6 +33,12 @@ class FileResponseAdapter(
                     context.startActivity(this)
                 }
             }
+            binding.share.setOnClickListener {
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_TEXT,responseModel?.fileLink)
+                context.startActivity(Intent.createChooser(intent,"Share Via"))
+            }
         }
     }
 

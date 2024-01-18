@@ -97,8 +97,8 @@
 
             <ImageView
                 android:id="@+id/share"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
                 android:layout_margin="16dp"
                 android:src="@drawable/ic_share"
                 app:layout_constraintBottom_toTopOf="@id/download"
@@ -108,8 +108,8 @@
 
             <ImageView
                 android:id="@+id/download"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
                 android:layout_margin="16dp"
                 android:src="@drawable/ic_download"
                 app:layout_constraintBottom_toBottomOf="parent"

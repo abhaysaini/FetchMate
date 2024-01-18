@@ -1,14 +1,23 @@
 package com.example.FetchMate.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.view.MenuItem
+import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.FetchMate.R
 import com.example.FetchMate.databinding.ActivityHomeBinding
 import com.example.FetchMate.data.api.RetrofitHelper
 import com.example.FetchMate.data.model.ResponseModel
 import com.example.FetchMate.ui.adapter.FileResponseAdapter
 import com.pluto.BuildConfig
+import com.pluto.utilities.extensions.color
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,6 +33,19 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+        val title = SpannableString("Found Files!!")
+        title.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.white)),
+            0,
+            title.length,
+            Spannable.SPAN_INCLUSIVE_INCLUSIVE
+        )
+        binding.toolbar.title = title
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(ContextCompat.getDrawable(this@HomeActivity, R.drawable.ic_back))
+        }
         if (intent.extras != null) {
             fileType = intent.getStringExtra("file_type_selected").toString()
             keyword = intent.getStringExtra("keyword").toString()
@@ -32,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = RetrofitHelper.responseApiInterface.getData(
-                    header1 = com.example.FetchMate.BuildConfig.HEADER_1  ,
+                    header1 = com.example.FetchMate.BuildConfig.HEADER_1,
                     header2 = com.example.FetchMate.BuildConfig.HEADER_2,
                     parameter1 = "Hulk",
                     parameter2 = fileType
@@ -44,9 +66,14 @@ class HomeActivity : AppCompatActivity() {
                     val files = response.body()?.fileFound
                     Log.i("abhay", files?.size.toString())
                     if (files != null) {
-                        withContext(Dispatchers.Main){
+                        withContext(Dispatchers.Main) {
                             updateRecyclerView(files)
                         }
+                    }
+                    runOnUiThread{
+                        binding.shimmerEffect.stopShimmer()
+                        binding.shimmerEffect.visibility = View.GONE
+                        binding.recyclerView.visibility = View.VISIBLE
                     }
                 } else {
                     Timber.tag("abhay").i("Error" + response.code().toString())
@@ -57,11 +84,34 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateRecyclerView(files : MutableList<ResponseModel>) {
-        Log.i("abhay","Number of items: ${files.size}")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    private fun updateRecyclerView(files: MutableList<ResponseModel>) {
+        Log.i("abhay", "Number of items: ${files.size}")
         fileResponseAdapter = FileResponseAdapter(this, files)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = fileResponseAdapter
         fileResponseAdapter.notifyDataSetChanged()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerEffect.startShimmer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.shimmerEffect.stopShimmer()
     }
 }
