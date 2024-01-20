@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    lateinit var keyword: String
+    var keyword: String = ""
     lateinit var fileTypeSelected: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,14 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 Id: Long
             ) {
-                fileTypeSelected = resources.getStringArray(R.array.spinner_items)[position]
+                when(position){
+                    0->{
+                        fileTypeSelected = ""
+                    }
+                    else->{
+                        fileTypeSelected = resources.getStringArray(R.array.spinner_items)[position]
+                    }
+                }
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -41,13 +48,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        keyword = binding.keyword.text.toString()
         Log.i("abhay", keyword)
         binding.searchButton.setOnClickListener {
-            Intent(this, HomeActivity::class.java).apply {
-                putExtra("keyword", keyword)
-                putExtra("file_type_selected", fileTypeSelected)
-                startActivity(this)
+            try {
+                keyword = binding.keyword.text.toString().trim()
+                Log.d("abhay", "fileTypeSelected: '$fileTypeSelected', keyword: '$keyword'")
+                if(fileTypeSelected.isNotBlank() && keyword.trim().isNotBlank()){
+                    Intent(this, HomeActivity::class.java).apply {
+                        putExtra("keyword", keyword)
+                        putExtra("file_type_selected", fileTypeSelected)
+                        startActivity(this)
+                    }
+                }
+                else{
+                    Snackbar.make(binding.root, "Please fill the details!!", Snackbar.LENGTH_LONG).show()
+                }
+            }
+            catch (e:Exception){
+                Log.i("abhay",e.message.toString())
             }
         }
     }

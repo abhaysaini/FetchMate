@@ -3,6 +3,7 @@
 
     <string name="spinner_prompt">Select file type</string>
     <string-array name="spinner_items">
+        <item>Select file type</item>
         <item>Video</item>
         <item>E-books</item>
         <item>Audio</item>

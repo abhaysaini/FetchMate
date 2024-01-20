@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/white"
+    android:padding="8dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -28,7 +29,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/nunito"
         android:text="Fill the details !!"
         android:textSize="16sp"
@@ -40,14 +41,27 @@
         app:layout_constraintBottom_toTopOf="@id/keyword"
         />
 
+    <ImageView
+        android:id="@+id/runner_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_runner"
+        android:layout_marginTop="60dp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        app:layout_constraintBottom_toTopOf="@id/keyword"
+        />
+
     <EditText
         android:id="@+id/keyword"
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="50dp"
         android:background="@drawable/ic_text_background"
         android:drawableLeft="@drawable/ic_text"
         android:drawablePadding="8dp"
@@ -55,7 +69,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/runner_image"
         app:layout_constraintBottom_toTopOf="@id/spinner"
         />
 
@@ -64,9 +78,9 @@
         android:layout_width="match_parent"
         android:padding="8dp"
         android:layout_height="48dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginRight="50dp"
         android:textColor="@color/black"
         android:background="@drawable/ic_text_background"
         app:layout_constraintEnd_toEndOf="parent"

@@ -56,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
                 val response = RetrofitHelper.responseApiInterface.getData(
                     header1 = com.example.FetchMate.BuildConfig.HEADER_1,
                     header2 = com.example.FetchMate.BuildConfig.HEADER_2,
-                    parameter1 = "Hulk",
+                    parameter1 = keyword,
                     parameter2 = fileType
                 )
                 val responseTime =
