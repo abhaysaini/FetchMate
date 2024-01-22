@@ -1,4 +1,4 @@
-package com.example.FetchMate
+package com.example.FetchMate.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,10 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.LinearLayout
+import com.example.FetchMate.R
 import com.example.FetchMate.databinding.ActivityMainBinding
-import com.example.FetchMate.ui.HomeActivity
+import com.example.FetchMate.ui.home.HomeActivity
+import com.example.FetchMate.ui.savedFile.SavedFileActivity
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 Snackbar.make(binding.root, "Please select file type", Snackbar.LENGTH_LONG).show()
             }
+        }
+
+        binding.savedFiles.setOnClickListener {
+            val intent = Intent(this, SavedFileActivity::class.java)
+            startActivity(intent)
         }
 
         Log.i("abhay", keyword)
